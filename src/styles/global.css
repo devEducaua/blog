@@ -22,7 +22,7 @@
 
 @font-face {
     font-family: Terminus;
-    src: url(/TerminessNerdFontMono-Regular.woff2) format("woff2");
+    src: url(./TerminessNerdFontMono-Regular.woff2) format("woff2");
 }
 
 body {
