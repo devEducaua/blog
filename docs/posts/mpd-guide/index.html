@@ -1,0 +1,43 @@
+<!DOCTYPE html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.14.6"><title>indu</title> <style>:root{--bg: #fffcf3;--fg: #777777;--orange: #d17e25;--sec: #f4f1e9;--light: #999}@media(prefers-color-scheme:dark){:root{--bg: #000000;--fg: #777777;--orange: #d17e25;--sec: #111111}}*{padding:0;margin:0}@font-face{font-family:Terminus;src:url(/TerminessNerdFontMono-Regular.woff2) format("woff2")}body{background-color:var(--bg);color:var(--fg);font-family:Terminus,Courier New,Courier,monospace;display:flex;justify-content:center;align-items:center;font-size:1.25rem}#title{font-size:5em;font-style:italic;text-align:center;margin-bottom:20px}a{color:var(--light);text-decoration:none}a:hover{color:var(--orange)}h2:after,h2:before,h3:after,h3:before{content:"--"}pre{padding:.5rem;overflow:auto;margin:20px 0}.astro-code.github-dark{background-color:var(--sec);color:var(--light)}code{font-family:monospace}main[data-astro-cid-vi7f45ss]{display:flex;justify-content:center;align-items:center;flex-direction:column;font-size:1.25rem;p{margin-bottom:20px}}article[data-astro-cid-vi7f45ss]{width:600px}#post-title[data-astro-cid-vi7f45ss]{font-size:3rem;margin:20px}#date[data-astro-cid-vi7f45ss]{text-align:center;margin:10px}#go-home[data-astro-cid-vi7f45ss]{text-align:center;margin:20px}
+</style><body data-astro-cid-vi7f45ss> <main data-astro-cid-vi7f45ss> <h1 id="post-title" data-astro-cid-vi7f45ss>mpd</h1> <span id="date" data-astro-cid-vi7f45ss>--/--/2025</span> <article data-astro-cid-vi7f45ss> <p>Music Player Daemon ou simplesmente mpd é a melhor forma de você ouvir música. minimalista, simples, customizável.
+como está em seu nome o mpd opera como um daemon, ele rodará no ‘backend’, você precisa de clientes para se conectar nele, esses é um de seus principais beneficios, você pode usar qualquer cliente que quiser.
+não vou entrar muito nos detalhes sobre o que ele é, mas sim sobre como usá-lo. pode saber mais sobre em <a href="https://musicpd.org">musicpd</a>.</p>
+<h3 id="instalação">instalação</h3>
+<p>ele está disponível no android, windows e linux. aqui prefiro focar no linux, até porquê nunca o usei no windows.
+você pode simplesmente instalar com o gerenciador de pacotes da sua distribuação. aqui alguns exemplos:</p>
+<p>se for baseada em arch: <code>sudo pacman -S mpd mpc</code>
+se for void: <code>sudo xbps-install -S mpd mpc</code>
+se for baseada em debian: <code>sudo apt install mpd mpc</code>
+<br></p>
+<p>note que também instalamos o mpc, que é basicamente o mais simples e básico cliente mpd.&#x3C;/</p>
+<h3 id="configuração">configuração</h3>
+<p>agora precisamos configurar nosso mpd. seu arquivo de configuração fica em <code>XDG_CONFIG_HOME/mpd/mpd.conf</code> que é o mesmo que <code>~/.config/mpd/mpd.conf</code>.
+veja essa básica configuração e vamos por partes:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span> music_directory     "/home/seu_usuario/Musicas"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> playlist_directory "/home/seu_usuario/Musicas/playlists"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> db_file "/home/seu_usuario/.config/mpd/database"</span></span>
+<span class="line"><span> auto_update	"yes"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> audio_output &#x26;#123</span></span>
+<span class="line"><span>    type   "fifo"</span></span>
+<span class="line"><span>    name   "my_fifo"</span></span>
+<span class="line"><span>    path   "/tmp/mpd.fifo"</span></span>
+<span class="line"><span>    format "44100:16:2"</span></span>
+<span class="line"><span> &#x26;#125</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span> audio_output &#x26;#123</span></span>
+<span class="line"><span>     type	"pulse"</span></span>
+<span class="line"><span>     name	"My pulse Output"</span></span>
+<span class="line"><span> &#x26;#125</span></span></code></pre>
+<p>apesar dele ser bem auto explicativo e simples, vamos destrincha-lo.
+music_directory é simplesmente a pasta onde suas músics estão, mesmo que eles estejam em subpastas.
+playlist_directory são suas playlists, pessoalmente nunca usei.
+o restante você até pode querer alterar, mas não é realmente necessário, o lugar onde fica seu banco de dados, seu output são coisas meio padrão.</p>
+<h3 id="uso">uso</h3>
+<p>há algumas diferentes formas de você usar o mpd. você pode roda-lo ligando ele como serviço, ou simplesmente colocando em algum tipo de autostart.
+para habilita-lo como serviço: <code>sudo systemctl enable --now mpd</code></p>
+<p>após isso basta você abrir alguém cliente mpd e o mpd fará todo o resto por ti, organização, artistas, albuns e etc.&#x3C;/</p>
+<p>eu pessoalmente uso o <a href="https://mierak.github.io/rmpc">rmpc</a>.
+pode encontrar mais clients em <a href="https://www.musicpd.org/clients/">musicpd</a> ou na <a href="https://wiki.archlinux.org/title/Music_Player_Daemon#Clients">archwiki</a>.</p> </article> <a id="go-home" href="../index.html" data-astro-cid-vi7f45ss>home</a> </main> </body>
