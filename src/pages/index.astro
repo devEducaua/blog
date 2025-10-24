@@ -1,16 +1,36 @@
 ---
-
+import "../styles/global.css";
+const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
 ---
 
+<style>
+    #posts-list {
+        li {
+            list-style-type: none;
+            line-height: 1.5;
+        }
+
+        span {
+            padding-right: 40px;
+        }
+    }
+
+</style>
+
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body>
+        <main>
+            <h1 id="title">blog</h1>
+
+            <ul id="posts-list">
+{posts.map(post => <li> <span>{post.frontmatter.date}</span><a href={post.url}>{post.frontmatter.title}</a> </li>)}
+            </ul>
+        </main>
+    </body>
 </html>

@@ -1,0 +1,57 @@
+---
+import "../styles/global.css";
+const { frontmatter } = Astro.props;
+---
+
+<style>
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 1.25rem;
+
+        p {
+            margin-bottom: 20px;
+        }
+    }
+
+    article {
+        width: 600px;
+    }
+
+    #post-title {
+        font-size: 3rem;
+        margin: 20px;
+    }
+
+    #date {
+        text-align: center;
+        margin: 10px;
+    }
+
+    #go-home {
+        text-align: center;
+        margin: 20px;
+    }
+
+</style>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>indu</title>
+</head>
+<body>
+    <main>
+        <h1 id="post-title">{frontmatter.title}</h2>
+        <span id="date">{frontmatter.date}</span>
+        <article>
+            <slot/>
+        </article>
+        <a id="go-home" href="../index.html">home</a>
+    </main>
+</body>
+</html>
