@@ -3,9 +3,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://deveducaua.github.io/blog",
+    site: "https://deveducaua.github.io/",
     outDir: "docs",
-    base: "/blog",
 
     build: {
         pageUrlFormat: "directory",
