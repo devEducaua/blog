@@ -19,14 +19,15 @@ const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
 
 <html lang="en">
     <head>
+        <link rel="icon" type="image/svg+xml" href="/lambda.png" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>Astro</title>
+        <title>lambda</title>
     </head>
     <body>
         <main>
-            <h1 id="title">blog</h1>
+            <h1 id="title">lambda</h1>
 
             <ul id="posts-list">
 {posts.map(post => <li> <span>{post.frontmatter.date}</span><a href={post.url}>{post.frontmatter.title}</a> </li>)}
